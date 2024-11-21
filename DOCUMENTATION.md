@@ -1,17 +1,32 @@
-# Lilly Technical Challenge Documentation Template
+## Disclaimer
 
-*This documentation template serves as a place for you to discuss how you approached this challenge, any issues you faced & how you overcame them, or any other points that you feel would be relevant for the interviewers to know. The text in italics is here to guide you - feel free to remove it once you fill out each section!*
+> **Note:**  
+> This document is a work in progress and serves as a brain dump for ideas and notes until the project is completed.  
+> Please treat this as an informal reference during development.
 
-***Not every section in this document is required. This is just a template to help get you started. Feel free to add or remove sections as you feel necessary.***
-
-## Approach
-*How did you approach this challenge? Did you work through the objectives in any particular order? If so, why? Did you utilize any external resources, such as tutorials, guides, or other materials?*
-
-## Objectives - Innovative Solutions
-*For the challenge objectives, did you do anything in a particular way that you want to discuss? Is there anything you're particularly proud of that you want to highlight? Did you attempt some objectives multiple times, or go back and re-write particular sections of code? If so, why? Use this space to document any key points you'd like to tell us about.*
-
-## Problems Faced
-*Use this space to document and discuss any issues you faced while undertaking this challenge and how you solved them. We recommend doing this proactively as you experience and resolve the issues - make sure you don't forget! (Screenshots are helpful, though not required)*.
-
-## Evaluation
-*How did you feel about the challenge overall? Did some parts go better than others? Did you run out of time? If you were to do this again, and were given more time, what would you do differently?*
+In other to run the start.sh script on my linux, i had to first chmod the script usig the command: 
+```sh
+chmod +x start.sh
+```
+Then i run the script running the:
+```sh
+start.sh
+```
+Upon running the command, the initialisation of the script started , below is a screenshot.
+---
+Now that the backend is running what we are goihg to do, it try to test the endpoint uusing postman. 
+Todo: Make sure to add what postman is and why it's been used.
+To confirm the server is running you should see something like this on your console or terminal
+```
+INFO:     Started server process [29233]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+```
+So before I proceed to running postman, i need to check the `main.py` class and go throught he method endpoints once again to understand how the endpoints work.
+Upon looking at the `main.py` i realised presently in the `endpoints`.
+1. `/medicine` endpoints - for getting all the medicine 
+2. `/medicine/{name}` - for getting a single medicine by the name
+3. `/create` - for creating new medicine
+4. `/update` - for updating for updating the neccessary fileds of the medicines
+5. `/delete` for deleting any medicines
