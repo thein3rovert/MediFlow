@@ -94,3 +94,23 @@ this helps to convert the raw response from the server into javascript object th
 Finally added few css styling for the medicine list.
 ![alt text](assets/medicinelistui.png)
 Future Plan is to dispplay the medicine list in form of a card element.
+
+Task 2: A data engineer had some issues migrating data, leaving some gaps in our database. How can you ensure that the frontend handles missing/invalid data returned from the APIs without crashing?
+
+First we have to validate the API before using it, we have to check if any missing fields are missing and if it happens that some fields are missing we will then assign default values to handle it.
+
+Second, one very important thing to always check if the status code, it one of the best way to handle api error on the frontend, we have to check if the status code we require is not the one fetch from the request this way we can send the the user approprait messages.
+
+Just Implemented the Data validation, ensuring default values for missing name.
+
+The function `validateFetchedMedicine`takes in a medecine param and it returns a new object wit name and price, if the name is valid and price is valid..if the name is not valid it returns unknown medicine to the user.
+```js
+function validateFetchedMedicine(medicine) {
+    return {
+        name: medicine.name || "Unknown Medicine",
+        price: (typeof medicine.price === "number" && medicine.price >= 0)
+            ? medicine.price : null
+    };
+}
+```
+In other to task this functionality, i need to create a input form instead that takes in the name and the values of the medicine, and we can also use for other endpoints crud functionalities.
