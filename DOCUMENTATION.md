@@ -30,3 +30,41 @@ Upon looking at the `main.py` i realised presently in the `endpoints`.
 3. `/create` - for creating new medicine
 4. `/update` - for updating for updating the neccessary fileds of the medicines
 5. `/delete` for deleting any medicines
+
+### Endpoints Todo
+
+- [ ] Tests get all medicine
+In other to test the `/medicine` endpoints, i opened postman and select the get request and paste in the url for the endpoints which in return return a response with status 200 and a body containing medicine details in json format. 
+![alt text](assets/image.png)
+![alt text](assets/3_all_medicine.png)
+
+-[ ] Run the frontend to confirm if its running
+Open the index.html file in my browser which display a UI containing a header (Medicine Tracker).
+![alt text](assets/2.png)
+What am going to do next is test the other enpoints to see which is working well and which have error.
+- [ ] Test the `/medicine{name}` 
+This endpoint successful return a response body and status code 200 ok, the response body contains the neccessary requested medicine with the name `Tonicast`.
+![alt text](assets/getmedbyname.png)
+![alt text](assets/getmedbyname02.png)
+I also try to get one more medicine `Cureallium` to further test the endpoints.
+- [ ] Test the endpoints for `/create`
+In other to test this endpoint using postman, i create a new post request in postman, passing in the new medicine name() and price in the form-data after a responsebody was return with a message and status code 200 ok.
+```http
+{
+    "message": "Medicine created successfully with name: Tetrasyclean"
+}
+```
+![alt text](assets/createmed.png)
+New medicine was updated in the database
+![alt text](assets/createmed2.png)
+- [ ] Test the `/update` 
+Created a new POST request, to update the price of the medicine, this endpoint doesnt update the name becuase the name is used as a unique identifier for the medicine. 
+SO we pass in the name as parm to the form-data and then the price to vbe updated.
+So i am just going to use the same name for the medicine i created `Tetrasyclean` and update the price from `12.99` to `30.99` since it's very expensive!!...hand its mine!!!.
+
+![alt text](assets/updatemed.png)
+The image above shows the successsful update of the medicine and the response message and status code 200 ok.
+- [ ] Lastely test the `/delete` enpoints
+For the delete endpoint, i sent a DELETE request and theen got a response message and a status code OK.. Meaning request was sent and executed corretly.
+![alt text](assets/deletemed.png)
+
