@@ -68,3 +68,29 @@ The image above shows the successsful update of the medicine and the response me
 For the delete endpoint, i sent a DELETE request and theen got a response message and a status code OK.. Meaning request was sent and executed corretly.
 ![alt text](assets/deletemed.png)
 
+## Notices isssues
+The issue i notice when `DELETE` and `UPDATE` the medicine request, this didnt update the medicine in the database `data.json` file, instead it just return a response message ok meaning the request was successsful but it didnt update the database itself.
+
+TASK 1: Fetch data from the backend server and send it to the the frontend, displaying it in a user-friendly way.
+
+First I added new Div to the `index.html` with the `id` medicines-list, this will contains all the of list of document retrieved from the API, the `id`. I fetch a list of medicine from the api endpoint
+```js
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('http://localhost:8000/medicines')
+```
+Then parse the json response from the server
+```js
+.then(response => {
+        return response.json();
+})
+```
+this helps to convert the raw response from the server into javascript object that can be worked with. In other to know and make sure that the data is being fetch i then log error that occurs during the fetch process.
+
+```js
+.catch(error => {
+    console.error('Error fetching data:', error);
+});
+```
+Finally added few css styling for the medicine list.
+![alt text](assets/medicinelistui.png)
+Future Plan is to dispplay the medicine list in form of a card element.
