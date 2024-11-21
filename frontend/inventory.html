@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management</title>
+    <link rel="stylesheet" href="inventory.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="inventory.html">Inventory Management</a>
+    </nav>
+    <h2>Welcome to the Inventory</h2>
+    <form id="medicine-form">
+        <input type="hidden" id="medicine-id" />
+        <label for="medicine-name">Name:</label>
+        <input type="text" id="medicine-name" required />
+        <label for="medicine-price">Price:</label>
+        <input type="number" id="medicine-price" required />
+        <button type="submit">Save Medicine</button>
+    </form>
+    <h1>Medicine Management</h1>
+    <div id="medicines-list"></div>
+    <script src="inventory.js"></script>
+</body>
+</html>
