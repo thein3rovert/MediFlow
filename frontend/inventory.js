@@ -1,48 +1,73 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Fetch the list of medicines when the DOM content is fully loaded
+    fetchMedicines();
+
+    // Add event listener for form submission
+    const form = document.getElementById('medicine-form');
+    form.addEventListener('submit', async function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const formData = new FormData(form); // Create a FormData object from the form
+
+        try {
+            const response = await fetch('http://localhost:8000/create', {
+                method: 'POST',
+                body: formData, // Send the FormData directly
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok couldnt create');
+            }
+
+            const result = await response.json();
+            alert(result.message); // Show a success message
+
+            // Reset the form
+            form.reset();
+            fetchMedicines(); // Optionally refresh the list of medicines
+        } catch (error) {
+            console.error('Error creating medicine:', error);
+        }
+    });
+});
+
+// Function to fetch and display all medicines
+function fetchMedicines() {
     fetch('http://localhost:8000/medicines')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
-            displayMedicines(data.medicines);
+            displayAllMedicines(data.medicines);
         })
         .catch(error => {
             console.error('Error fetching data:', error);
         });
-});
-
-function validateFetchedMedicine(medicine) {
-    return {
-        name: medicine.name || "Unknown Medicine",
-        price: (typeof medicine.price === "number" && medicine.price >= 0)
-            ? medicine.price : null
-    };
 }
 
-function displayMedicines(medicines) {
+// Function to display a single medicine
+function displayMedicine(medicine) {
     const medicinesList = document.getElementById('medicines-list');
-    medicinesList.innerHTML = '';
-
-// Display medicines in the UI
-medicines.forEach(medicine => {
-    const validMedicine = validateFetchedMedicine(medicine); // Validate the medicine data
     const medicineItem = document.createElement('div');
-    medicineItem.classList.add('medicine-item'); // Add the class for styling
-    // Prepare the price display
-    const priceDisplay = validMedicine.price !== null ? `$${validMedicine.price.toFixed(2)}` : 'Price Not Available';
-
-    // Set the inner HTML for the medicine item
+    medicineItem.classList.add('medicine-item');
+    const priceDisplay = (typeof medicine.price === "number" && medicine.price >= 0)
+        ? `$${medicine.price.toFixed(2)}` : 'Price Not Available';
     medicineItem.innerHTML = `
-        <h2>${validMedicine.name}</h2>
+        <h2>${medicine.name}</h2>
         <p>Price: ${priceDisplay}</p>
-        <button onclick="editMedicine('${validMedicine.id}', '${validMedicine.name}', ${validMedicine.price})">Edit</button>
-        <button onclick="deleteMedicine('${validMedicine.id}')">Delete</button>
-
     `;
 
-
-    // Append the medicine item to the list
-
     medicinesList.appendChild(medicineItem);
+}
 
-});
+function displayAllMedicines(medicines) {
+    const medicinesList = document.getElementById('medicines-list');
+    medicinesList.innerHTML = ''; // Clear any existing content
 
+    medicines.forEach(medicine => {
+        displayMedicine(medicine);
+    });
 }
