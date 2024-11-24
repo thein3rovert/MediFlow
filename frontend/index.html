@@ -7,18 +7,37 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="inventory.html">Inventory Management</a>
+    </nav>
     <header>
         <h1>Medicine Tracker</h1>
-    </header>
-    <div class="disclaimer" id="disclaimer">
-        Disclaimer: All medicine names and prices used in this application are fictional and do not represent any real medicine(s).
-    </div>
-    <div class=""container>
-        <h1>Medicine List</h1>
-        <div id="medicines-list"></div>
-    </div>
-    <main>
-    </main>
-    <script src="script.js"></script>
-</body>
-</html>
+        </header>
+        <div class="container">
+            <h1>Welcome to the Medicine Management System</h1>
+            <p>This is the main page. Use the navigation bar to access different sections.</p>
+        
+            <!-- Add this section for the stat cards -->
+        
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h2>Total Medicines</h2>
+                    <div class="stat-value" id="total-medicines">0</div>
+                    <div class="stat-label">Items in Database</div>
+                </div>
+                <div class="stat-card">
+                    <h2>Average Price</h2>
+                    <div class="stat-value" id="average-price">0</div>
+                    <div class="stat-label">Average Price of Medicines</div>
+                </div>
+            </div>
+        
+            <div id="medicines-list"></div>
+        </div>
+        <main>
+        </main>
+        <script src="script.js"></script>
+        </body>
+        
+        </html>
