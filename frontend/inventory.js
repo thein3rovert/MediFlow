@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (!response.ok) {
-                throw new Error('Network response was not ok couldnt create');
+                throw new Error('Network response was not ok couldn\'t create');
             }
 
             const result = await response.json();
@@ -29,9 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error creating medicine:', error);
         }
     });
+
+    // Add event listener for the search input
+    const searchInput = document.getElementById('search-medicine');
+    searchInput.addEventListener('input', function () {
+        const searchTerm = searchInput.value.toLowerCase();
+        filterMedicines(searchTerm);
+    });
 });
 
 // Function to fetch and display all medicines
+let allMedicines = []; // Store all medicines globally
+
 function fetchMedicines() {
     fetch('http://localhost:8000/medicines')
         .then(response => {
@@ -41,7 +50,8 @@ function fetchMedicines() {
             return response.json();
         })
         .then(data => {
-            displayAllMedicines(data.medicines);
+            allMedicines = data.medicines; // Store the medicines
+            displayAllMedicines(allMedicines); // Display all medicines initially
         })
         .catch(error => {
             console.error('Error fetching data:', error);
@@ -54,7 +64,8 @@ function displayMedicine(medicine) {
     medicineItem.classList.add('medicine-item');
     const priceDisplay = (typeof medicine.price === "number" && medicine.price >= 0)
         ? `$${medicine.price.toFixed(2)}` : 'Price Not Available';
-        // New medicine element for managing update and delete
+
+    // New medicine element for managing update and delete
     medicineItem.innerHTML = `
         <h2>${medicine.name}</h2>
         <p>Price: ${priceDisplay}</p>
@@ -65,6 +76,19 @@ function displayMedicine(medicine) {
         </div>
     `;
     medicinesList.appendChild(medicineItem);
+}
+
+function filterMedicines(searchTerm) {
+    const medicinesList = document.getElementById('medicines-list');
+    medicinesList.innerHTML = ''; // Clear the current list
+
+    const filteredMedicines = allMedicines.filter(medicine => 
+        medicine.name.toLowerCase().includes(searchTerm)
+    );
+
+    filteredMedicines.forEach(medicine => {
+        displayMedicine(medicine); // Display filtered medicines
+    });
 }
 
 function showOptions(name) {
@@ -97,7 +121,6 @@ function deleteMedicine(name) {
         });
 }
 
-
 function updateMedicine(name) {
     const price = prompt("Enter new price:");
     if (price) {
@@ -119,7 +142,7 @@ function updateMedicine(name) {
             })
             .then(data => {
                 alert(data.message);
-                fetchMedicines(); // Refresh the list after updating
+                fetchMedicines(); 
             })
             .catch(error => {
                 console.error('Error updating medicine:', error);
