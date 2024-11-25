@@ -1,4 +1,3 @@
-import axios from "axios";
 document.addEventListener('DOMContentLoaded', () => {
     // Fetch the list of medicines when the DOM content is fully loaded
     fetchMedicines();
@@ -6,17 +5,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('medicine-form');
     form.addEventListener('submit', async function (event) {
         event.preventDefault(); // Prevent the default form submission
-
+        /*
+        ==================
+        Filter Medicine
+        ==================
+        */
         const formData = new FormData(form);
 
         try {
-            const response = await axios.post('http://localhost:8000/create', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+            const response = await fetch('http://localhost:8000/create', {
+                method: 'POST',
+                body: formData, // Send the FormData directly
             });
 
-            alert(response.data.message); // Show a success message
+            if (!response.ok) {
+                throw new Error('Network response was not ok couldn\'t create');
+            }
+
+            const result = await response.json();
+            alert(result.message); // Show a success message
+
 
             form.reset();
             fetchMedicines();
@@ -32,19 +40,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
 let allMedicines = [];
 
 function fetchMedicines() {
-    axios.get('http://localhost:8000/medicines')
+    fetch('http://localhost:8000/medicines')
         .then(response => {
-            allMedicines = response.data.medicines; // Store the medicines
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            allMedicines = data.medicines; // Store the medicines
             displayAllMedicines(allMedicines); // Display all medicines initially
         })
         .catch(error => {
             console.error('Error fetching data:', error);
         });
 }
-
+/*
+==================
+Function to display all medicine
+==================
+*/
 function displayMedicine(medicine) {
     const medicinesList = document.getElementById('medicines-list');
     const medicineItem = document.createElement('div');
@@ -52,6 +71,12 @@ function displayMedicine(medicine) {
     const priceDisplay = (typeof medicine.price === "number" && medicine.price >= 0)
         ? `$${medicine.price.toFixed(2)}` : 'Price Not Available';
 
+
+    /*    
+    ==================
+    New medicine element for managing update and delete
+    ==================
+    */
     medicineItem.innerHTML = `
         <h2>${medicine.name}</h2>
         <p>Price: ${priceDisplay}</p>
@@ -64,6 +89,11 @@ function displayMedicine(medicine) {
     medicinesList.appendChild(medicineItem);
 }
 
+/*
+==================
+Filter Medicine
+==================
+*/
 function filterMedicines(searchTerm) {
     const medicinesList = document.getElementById('medicines-list');
     medicinesList.innerHTML = ''; // Clear the current list
@@ -85,20 +115,26 @@ function showOptions(name) {
 function deleteMedicine(name) {
     const formData = new URLSearchParams();
     formData.append('name', name);
-
-    axios.delete('http://localhost:8000/delete', {
-        data: formData,
+    fetch('http://localhost:8000/delete', {
+        method: 'DELETE',
+        body: formData,
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
     })
-    .then(response => {
-        alert(response.data.message);
-        fetchMedicines(); // Refresh the list after deletion
-    })
-    .catch(error => {
-        console.error('Error deleting medicine:', error);
-    });
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            alert(data.message);
+            fetchMedicines(); // Refresh the list after deletion
+        })
+        .catch(error => {
+            console.error('Error deleting medicine:', error);
+        });
 }
 
 function updateMedicine(name) {
@@ -107,19 +143,26 @@ function updateMedicine(name) {
         const formData = new URLSearchParams();
         formData.append('name', name);
         formData.append('price', price);
-
-        axios.post('http://localhost:8000/update', formData, {
+        fetch('http://localhost:8000/update', {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
-            }
+            },
+            body: formData
         })
-        .then(response => {
-            alert(response.data.message);
-            fetchMedicines();
-        })
-        .catch(error => {
-            console.error('Error updating medicine:', error);
-        });
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                alert(data.message);
+                fetchMedicines();
+            })
+            .catch(error => {
+                console.error('Error updating medicine:', error);
+            });
     }
 }
 

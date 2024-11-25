@@ -1,6 +1,8 @@
 
 <p align="center"><img width=60% src="assets/MediFlow.png"></p>
 
+<br>
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![Python](https://img.shields.io/badge/python-v3.8+-blue.svg)
 ![CSS](https://img.shields.io/badge/css-v3.0+-blue.svg)  
@@ -19,11 +21,11 @@
 ---
 
 # Medicine Tracker (Mediflow)
+![Alt text](assets/MediFlow.gif)
 
 ## Project Overview
 The Medicine Tracker project is designed to streamline the management of medicine inventories by providing a comprehensive solution for tracking medicines. It aims to simplify the process of adding, updating, retrieving, and deleting medicine records, ensuring efficient inventory management for pharmacies and healthcare providers.
 ## Getting Started
-
 ### Project Structure
 ```
 ├── data.json
