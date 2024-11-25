@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Management</title>
-    <link rel="stylesheet" href="inventory.css">
+    <link rel="stylesheet" href="./styles/inventory.css">
 </head>
+
 <body>
     <nav>
         <a href="index.html">Home</a>
@@ -14,28 +16,25 @@
     <h2>Welcome to the Inventory</h2>
     <div class="search-container">
         <div class="search-input">
-            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
-            <input 
-                type="text" 
-                id="search-medicine" 
-                placeholder="Search medicines..." 
-                aria-label="Search medicines"
-            >
+            <input type="text" id="search-medicine" placeholder="Search medicines..." aria-label="Search medicines">
         </div>
     </div>
     <form id="medicine-form">
         <input type="hidden" id="medicine-id" />
         <label for="medicine-name">Name:</label>
-        <input type="text" id="medicine-name" name="name" required /> <!-- Ensure the name attribute is set -->
+        <input type="text" id="medicine-name" name="name" required />
         <label for="medicine-price">Price:</label>
-        <input type="number" id="medicine-price" name="price" required /> <!-- Ensure the name attribute is set -->
+        <input type="number" id="medicine-price" name="price" required />
         <button type="submit">Save Medicine</button>
     </form>
     <h1>Medicine Management</h1>
     <div id="medicines-list"></div>
     <script src="inventory.js"></script>
 </body>
+
 </html>
