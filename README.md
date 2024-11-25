@@ -1,18 +1,16 @@
 
-<p align="center"><img width=60% src="![[readme for elli lilly-20241125211302262.webp]]"></p>
+<p align="center"><img width=60% src="assets/MediFlow.png"></p>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![Python](https://img.shields.io/badge/python-v3.8+-blue.svg)
-![HTML](https://img.shields.io/badge/html-v5-orange.svg)  
 ![CSS](https://img.shields.io/badge/css-v3.0+-blue.svg)  
-![JavaScript](https://img.shields.io/badge/javascript-es6+-yellow.svg)
-[![Build Status](https://travis-ci.org/yourusername/mediflow.svg?branch=master)](https://travis-ci.org/yourusername/mediflow)
 ![Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)
 
 <p align="center">
   <a href="#project-overview">Project Overview</a> •
   <a href="#getting-started">Getting Started</a> •
+  <a href="#project-structure">Project Structure</a> •
   <a href="#features">Features</a> •
   <a href="#external-resources">External Resources Utilized</a> •
   <a href="#conclusion">Conclusion</a>
@@ -20,13 +18,25 @@
 
 ---
 
-Feel free to customize the links and sections to fit your project's structure and content.
 # Medicine Tracker (Mediflow)
 
 ## Project Overview
 The Medicine Tracker project is designed to streamline the management of medicine inventories by providing a comprehensive solution for tracking medicines. It aims to simplify the process of adding, updating, retrieving, and deleting medicine records, ensuring efficient inventory management for pharmacies and healthcare providers.
 ## Getting Started
 
+### Project Structure
+```
+├── data.json
+├── main.py
+├── requirements.txt
+├── index.html
+├── inventory.html
+├── inventory.js
+├── script.js
+└── styles
+    ├── inventory.css
+    └── style.css
+```
 ### Prerequisites
 Ensure that Git and Python are installed on your machine. Verify their versions using the following commands:
 

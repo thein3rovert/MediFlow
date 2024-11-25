@@ -3,7 +3,7 @@
 ### Project Name: Medicine Tracker (Mediflow)
 
 ### Purpose
-The Medicine Tracker project is designed to streamline the management of pharmaceutical inventories by providing a comprehensive solution for tracking medicines. It aims to simplify the process of adding, updating, retrieving, and deleting medicine records, ensuring efficient inventory management for pharmacies and healthcare providers.
+The Medicine Tracker project is designed to streamline the management of medicine inventories by providing a comprehensive solution for tracking medicines. It aims to simplify the process of adding, updating, retrieving, and deleting medicine records, ensuring efficient inventory management for pharmacies and healthcare providers.
 ### Approach and Strategy for Tackling the Challenge
 To effectively address this challenge, I began by thoroughly reviewing the project README file. This step was crucial in ensuring a comprehensive understanding of the tasks at hand before proceeding with the implementation. It provided a solid foundation for the work ahead.
 
