@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Fetch the list of medicines when the DOM content is fully loaded
     fetchMedicines();
 
     const form = document.getElementById('medicine-form');
     form.addEventListener('submit', async function (event) {
-        event.preventDefault(); // Prevent the default form submission
+        event.preventDefault(); 
         /*
         ==================
         Filter Medicine
@@ -19,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (!response.ok) {
-                throw new Error('Network response was not ok couldn\'t create');
+                throw new Error('Network response was not ok unable to creare medicine');
             }
 
             const result = await response.json();
@@ -47,13 +46,13 @@ function fetchMedicines() {
     fetch('http://localhost:8000/medicines')
         .then(response => {
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error('Internal Server Error, unable to fetch medicine');
             }
             return response.json();
         })
         .then(data => {
-            allMedicines = data.medicines; // Store the medicines
-            displayAllMedicines(allMedicines); // Display all medicines initially
+            allMedicines = data.medicines;
+            displayAllMedicines(allMedicines); 
         })
         .catch(error => {
             console.error('Error fetching data:', error);
@@ -94,16 +93,16 @@ function displayMedicine(medicine) {
 Filter Medicine
 ==================
 */
-function filterMedicines(searchTerm) {
+function filterMedicines(searchMedicine) {
     const medicinesList = document.getElementById('medicines-list');
-    medicinesList.innerHTML = ''; // Clear the current list
+    medicinesList.innerHTML = ''; 
 
     const filteredMedicines = allMedicines.filter(medicine =>
-        medicine.name.toLowerCase().includes(searchTerm)
+        medicine.name.toLowerCase().includes(searchMedicine)
     );
 
     filteredMedicines.forEach(medicine => {
-        displayMedicine(medicine); // Display filtered medicines
+        displayMedicine(medicine);
     });
 }
 
@@ -124,13 +123,13 @@ function deleteMedicine(name) {
     })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error('Network response was not ok unable to update medicine');
             }
             return response.json();
         })
         .then(data => {
             alert(data.message);
-            fetchMedicines(); // Refresh the list after deletion
+            fetchMedicines();
         })
         .catch(error => {
             console.error('Error deleting medicine:', error);
@@ -152,7 +151,7 @@ function updateMedicine(name) {
         })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error('Network response was not ok unaboel to delete medicine');
                 }
                 return response.json();
             })

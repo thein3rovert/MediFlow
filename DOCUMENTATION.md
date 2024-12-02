@@ -96,18 +96,16 @@ Yes, I utilized Postman extensively to test the API endpoints, i also utilised s
         - On success: show message, refresh list.
 
 #### Ensuring Frontend Resilience: Handling Missing and Invalid API Data Gracefully
-To ensure the fronted handles missing or invalid API data without crashing, I implemented asynchronous functions for smooth data fetching. This allows the app to remain responsive even if data retrieval is delayed.
+I extensively used Postman to test the API endpoints. This tool was invaluable for sending requests and verifying responses, ensuring that each endpoint behaved as expected. Additionally, I referred to Python documentation for guidance on creating endpoints and consulted various online tutorials to understand best practices for API testing and error handling.
 
-I added error handling to catch network issues, displaying user-friendly messages instead of technical errors. For missing data, I used placeholder content to maintain a consistent UI and clearly indicated any gaps in information.
-
-By validating API responses, I quickly address discrepancies, ensuring a seamless user experience despite backend data issues. These strategies keep the frontend user-friendly.
 #### Designing a User-Friendly Interface for Seamless Data Input and Backend Integration
-
 Building on my experience with a hospital management system in Java and JavaFX, I applied similar principles to this project, focusing on the pharmacy component. Although I hadn't previously worked on pharmacy features, I learned the importance of effective CRUD implementation.
 For this project, I aimed to create a user-friendly interface for seamless data input and backend communication. By using modular design, I separated the homepage from inventory management, enhancing both maintainability and user experience.
 Switching to a different programming language and integrating API endpoints expanded my skills and helped me design an intuitive, efficient system. The modular approach allows users to easily navigate and manage data, making the interface straightforward and accessible.
 
 Overall, my past experience helped me create a solution that balances functionality with user experience, ensuring efficient data handling and a user-friendly interface.
+
+
 #### Developing a Backend Function for Quarterly Medicine Price Averaging
 Despite initial concerns due to limited Python experience, my Java background made it easier to develop the function. I created an endpoint, `@app.get("/average-price")`, to calculate and return the average price of all medicines.
 
@@ -116,11 +114,13 @@ I utilized this endpoint in the frontend to display the average price on a card,
 This solution efficiently supports the quarterly report requirement and enhances the user interface with dynamic data visualization.
 
 
-### Challenges Encountered
 
+### Challenges Encountered
 One significant issue I encountered was that the `DELETE` and `UPDATE` requests did not reflect changes in the `data.json` file when tested with postman , despite returning a successful response. This required further investigation to ensure data persistence across operations.
 
 Additionally, I faced challenges with the frontend's medicine addition functionality, which I am currently working to resolve, the most challenging thing for me was designing the frontend of the appilcation.  
+
+
 ### Evaluation
 Overall, the challenge was a rewarding experience. While some parts, like setting up the backend and testing endpoints, went smoothly, others, such as ensuring data persistence and frontend functionality, proved more challenging. Additionally, working with a different language was initially difficult for me, but as I progressed through the challenge, I was able to adapt quickly. I feel proud of my willingness to learn and my curiosity to explore other libraries.
 
